@@ -10,8 +10,10 @@ export const Header = () => {
         </div>
         <div className="settings">
           <ul>
-            <li>+</li>
-            <li>
+            <li data-testid="add-task-action" className="settings__add">
+              +
+            </li>
+            <li data-testid="dark-mode-action" className="settings__darkmode">
               <GiHamburgerMenu />
             </li>
           </ul>

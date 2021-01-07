@@ -5,13 +5,13 @@ import { FaCalendarDay, FaCalendarWeek } from "react-icons/fa";
 export const Sidebar = () => (
   <div className="sidebar" data-testid="sidebar">
     <ul className="sidebar__generic">
-      <li>
+      <li data-testid="today" className="today">
         <span>
           <FaCalendarDay />
         </span>
         <span>Dzisiejsze zadania</span>
       </li>
-      <li>
+      <li data-testid="next_week" className="next_week">
         <span>
           <FaCalendarWeek />
         </span>
