@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdExpandMore } from "react-icons/md";
 import { FaCalendarDay, FaCalendarWeek } from "react-icons/fa";
+import { useSelectedProjectValue } from "../../context";
+import { Projects } from "../Projects";
 
-export const Sidebar = () => (
-  <div className="sidebar" data-testid="sidebar">
-    <ul className="sidebar__generic">
-      <li data-testid="today" className="today">
+export const Sidebar = () => {
+  const { setSelectedProject } = useSelectedProjectValue;
+  const [active, setActive] = useState("today");
+  const [showProjects, setShowProjects] = useState(true);
+
+  return (
+    <div className="sidebar" data-testid="sidebar">
+      <ul className="sidebar__generic">
+        <li data-testid="today" className="today">
+          <span>
+            <FaCalendarDay />
+          </span>
+          <span>Dzisiejsze zadania</span>
+        </li>
+        <li data-testid="next_week" className="next_week">
+          <span>
+            <FaCalendarWeek />
+          </span>
+          <span>Ten tydzień</span>
+        </li>
+      </ul>
+      <div className="sidebar__middle">
         <span>
-          <FaCalendarDay />
+          <MdExpandMore />
         </span>
-        <span>Dzisiejsze zadania</span>
-      </li>
-      <li data-testid="next_week" className="next_week">
-        <span>
-          <FaCalendarWeek />
-        </span>
-        <span>Ten tydzień</span>
-      </li>
-    </ul>
-    <div className="sidebar__middle">
-      <span>
-        <MdExpandMore />
-      </span>
-      <h2>Projects</h2>
+        <h2>Projects</h2>
+      </div>
+      <ul className="sidebar__projects">Projects will be here!</ul>
+      <Projects />
     </div>
-    <ul className="sidebar__projects">Projects will be here!</ul>
-    Add Project Component here!!
-  </div>
-);
+  );
+};
