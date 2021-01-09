@@ -75,5 +75,5 @@ export const useProjects = () => {
       });
   }, [projects]);
 
-  return projects;
+  return { projects, setProjects };
 };
