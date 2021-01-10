@@ -3,6 +3,7 @@ import { MdExpandMore } from "react-icons/md";
 import { FaCalendarDay, FaCalendarWeek } from "react-icons/fa";
 import { useSelectedProjectValue } from "../../context";
 import { Projects } from "../Projects";
+import { AddProject } from "../AddProject";
 
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue;
@@ -31,8 +32,8 @@ export const Sidebar = () => {
         </span>
         <h2>Projects</h2>
       </div>
-      <ul className="sidebar__projects">Projects will be here!</ul>
-      <Projects />
+      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
+      {showProjects && <AddProject />}
     </div>
   );
 };
