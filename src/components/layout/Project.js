@@ -40,8 +40,8 @@ export const Project = ({ project }) => {
                 onClick={() => deleteProject(project.docId)}
               >
                 Usuń
-                <span onClick={() => setShowConfirm(!showConfirm)}>Anuluj</span>
               </button>
+              <span onClick={() => setShowConfirm(!showConfirm)}>Anuluj</span>
             </div>
           </div>
         )}
