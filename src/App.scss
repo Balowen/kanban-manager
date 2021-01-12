@@ -212,7 +212,7 @@ header {
   @include no-select();
   width: 266px;
   height: calc(100vh);
-  padding-top: 80px;
+  padding-top: 70px;
   position: fixed;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -228,13 +228,17 @@ header {
     padding-right: 15px;
 
     &:hover .sidebar__project-delete {
-      display: block;
+      display: flex;
     }
   }
 
   &__project {
-    padding: 5px;
     cursor: pointer;
+    padding: 7px;
+
+    &-name {
+      padding-left: 10px;
+    }
 
     &-delete {
       margin-left: auto;
@@ -251,29 +255,14 @@ header {
       background-color: white;
     }
 
-    &:nth-child(1) {
-      .sidebar__dot {
+    &:nth-child(odd) {
+      .sidebar__bullet {
         color: #6accbc;
       }
     }
-    &:nth-child(2) {
-      .sidebar__dot {
+    &:nth-child(even) {
+      .sidebar__bullet {
         color: #fad003;
-      }
-    }
-    &:nth-child(3) {
-      .sidebar__dot {
-        color: #ff8d85;
-      }
-    }
-    &:nth-child(4) {
-      .sidebar__dot {
-        color: #ff9932;
-      }
-    }
-    &:nth-child(5) {
-      .sidebar__dot {
-        color: #af38eb;
       }
     }
   }
@@ -339,6 +328,43 @@ header {
       &:hover {
         font-weight: bold;
         background-color: white;
+      }
+    }
+  }
+}
+
+// ------Delete confirmation ------------
+
+.project-delete-modal {
+  position: relative;
+
+  &__inner {
+    @include box-overlay();
+    z-index: 99;
+    width: 200px;
+    padding: 10px;
+    top: 10px;
+    right: 0;
+
+    background-color: white;
+
+    p {
+      margin: 10px 5px;
+      line-height: normal;
+      font-weight: normal;
+    }
+
+    button {
+      @include btn(60px);
+    }
+
+    span {
+      @include cancel();
+      font-weight: normal;
+
+      &.active,
+      &:hover {
+        font-weight: bold;
       }
     }
   }
