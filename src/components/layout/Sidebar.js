@@ -1,23 +1,50 @@
 import React, { useState } from "react";
 import { MdExpandMore } from "react-icons/md";
-import { FaCalendarDay, FaCalendarWeek } from "react-icons/fa";
+import { FaCalendarDay, FaCalendarWeek, FaTasks } from "react-icons/fa";
 import { useSelectedProjectValue } from "../../context";
 import { Projects } from "../Projects";
 import { AddProject } from "../AddProject";
 
 export const Sidebar = () => {
-  const { setSelectedProject } = useSelectedProjectValue;
+  const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState("today");
   const [showProjects, setShowProjects] = useState(true);
 
   return (
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
+        <li data-testid="notepad" className="notepad">
+          <div
+            data-testid="notepad-action"
+            tabIndex={0}
+            role="button"
+            onClick={() => {
+              setActive("notepad");
+              setSelectedProject("NOTEPAD");
+            }}
+          >
+            <span>
+              <FaTasks />
+            </span>
+            <span>Notes</span>
+          </div>
+        </li>
+
         <li data-testid="today" className="today">
-          <span>
-            <FaCalendarDay />
-          </span>
-          <span>Dzisiejsze zadania</span>
+          <div
+            data-testid="today-action"
+            tabIndex={0}
+            role="button"
+            onClick={() => {
+              setActive("today");
+              setSelectedProject("TODAY");
+            }}
+          >
+            <span>
+              <FaCalendarDay />
+            </span>
+            <span>Dzisiejsze zadania</span>
+          </div>
         </li>
         <li data-testid="next_week" className="next_week">
           <span>

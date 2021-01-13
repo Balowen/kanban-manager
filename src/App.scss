@@ -369,3 +369,25 @@ header {
     }
   }
 }
+
+//------------- Content ----------------
+.content {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  max-width: 1000px;
+}
+
+// ------Tasks-----------
+.tasks {
+  width: 656px;
+  background-color: white;
+  margin-left: 266px;
+  border-right: $generic-border;
+  min-height: calc(100vh);
+  vertical-align: top;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 80px;
+  padding-bottom: 84px;
+}

@@ -24,7 +24,7 @@ export const useTasks = (selectedProject) => {
             "==",
             dayjs().format("DD/MM/YYYY")
           ))
-        : selectedProject === "INBOX" || selectedProject === 0
+        : selectedProject === "NOTEPAD" || selectedProject === 0
         ? (unsubscribe = unsubscribe.where("date", "==", ""))
         : unsubscribe;
 
@@ -35,7 +35,7 @@ export const useTasks = (selectedProject) => {
       }));
 
       setTasks(
-        selectedProject === "NEXT_7"
+        selectedProject === "NEXT_WEEK"
           ? newTasks.filter(
               (task) =>
                 dayjs(task.data, "DD-MM-YYYY").diff(dayjs(), "days") <= 7 &&

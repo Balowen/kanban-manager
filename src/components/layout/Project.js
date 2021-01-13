@@ -17,7 +17,7 @@ export const Project = ({ project }) => {
       .delete()
       .then(() => {
         setProjects([...projects]);
-        setSelectedProject("today");
+        setSelectedProject("TODAY");
       });
   };
 
