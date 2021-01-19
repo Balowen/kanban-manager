@@ -13,49 +13,57 @@ export const Sidebar = () => {
   return (
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
-        <li data-testid="notepad" className="notepad">
-          <div
-            data-testid="notepad-action"
-            tabIndex={0}
-            role="button"
-            onClick={() => {
-              setActive("notepad");
-              setSelectedProject("NOTEPAD");
-            }}
-          >
-            <span>
-              <FaTasks />
-            </span>
-            <span>Notes</span>
-          </div>
+        <li
+          data-testid="notepad"
+          className={active === "notepad" ? "active" : undefined}
+          onClick={() => {
+            setActive("notepad");
+            setSelectedProject("NOTEPAD");
+          }}
+        >
+          <span>
+            <FaTasks />
+          </span>
+          <span>Notes</span>
         </li>
 
-        <li data-testid="today" className="today">
-          <div
-            data-testid="today-action"
-            tabIndex={0}
-            role="button"
-            onClick={() => {
-              setActive("today");
-              setSelectedProject("TODAY");
-            }}
-          >
-            <span>
-              <FaCalendarDay />
-            </span>
-            <span>Dzisiejsze zadania</span>
-          </div>
+        <li
+          data-testid="today"
+          className={active === "today" ? "active" : undefined}
+          data-testid="today-action"
+          role="button"
+          onClick={() => {
+            setActive("today");
+            setSelectedProject("TODAY");
+          }}
+        >
+          <span>
+            <FaCalendarDay />
+          </span>
+          <span>Dzisiejsze zadania</span>
         </li>
-        <li data-testid="next_week" className="next_week">
+        <li
+          data-testid="next_week"
+          className={active === "next_week" ? "active" : undefined}
+          onClick={() => {
+            setActive("next_week");
+            setSelectedProject("NEXT_WEEK");
+          }}
+        >
           <span>
             <FaCalendarWeek />
           </span>
           <span>Ten tydzień</span>
         </li>
       </ul>
-      <div className="sidebar__middle">
+      <div
+        className="sidebar__middle"
+        onClick={() => setShowProjects(!showProjects)}
+      >
         <span>
-          <MdExpandMore />
+          <MdExpandMore
+            className={!showProjects ? "hidden-projects" : undefined}
+          />
         </span>
         <h2>Projects</h2>
       </div>
