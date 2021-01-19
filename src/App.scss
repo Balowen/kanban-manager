@@ -390,4 +390,46 @@ header {
   padding-right: 40px;
   padding-top: 80px;
   padding-bottom: 84px;
+
+  @include mq("900px") {
+    margin-left: 0;
+    width: auto;
+  }
+
+  h2 {
+    font-weight: normal;
+    margin: 0 30px 20px 0;
+  }
+
+  .add-task {
+    margin: 20px 0;
+  }
+
+  &__list li {
+    display: flex;
+    color: #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: none;
+    line-height: 18px;
+    border-bottom: 1px solid #f0f0f0;
+
+    .checkbox-holder {
+      margin-right: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .checkbox {
+        cursor: pointer;
+        border-color: gray;
+        height: 16px;
+        width: 16px;
+        color: black;
+        display: block;
+        border: 1px solid gray;
+        border-radius: 16px;
+      }
+    }
+  }
 }
