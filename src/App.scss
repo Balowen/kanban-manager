@@ -28,7 +28,7 @@ ul {
 $generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
   rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
-$generic-bg: #db4c3f;
+$generic-bg: #2b89e2;
 
 // MIXINS -------------------------------
 @mixin box-overlay() {
@@ -36,7 +36,7 @@ $generic-bg: #db4c3f;
   position: absolute;
   width: 100%;
   z-index: 1;
-  top: 85px;
+  top: 80px;
   border-radius: 3px;
 }
 
@@ -53,31 +53,29 @@ $generic-bg: #db4c3f;
 }
 
 @mixin no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
-@mixin btn($width) {
-  width: $width;
-  background-color: $generic-bg;
+@mixin btn($primary-color, $bg-hover-color: $generic-bg) {
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  background-color: $primary-color;
   color: #fff !important;
-  border: 1px solid transparent;
+
+  font-weight: bold;
+  padding: 6px 12px 6px 12px;
   margin-right: 5px;
   margin-top: 10px;
   font-weight: bold;
+
   font-size: 13px !important;
-  line-height: 17px;
-  padding: 6px 12px 7px 12px;
   position: relative;
   display: inline-block;
-  white-space: nowrap;
-  border-radius: 3px !important;
-  text-decoration: none !important;
-  text-align: center;
   cursor: pointer;
+
+  &:hover {
+    background-color: $bg-hover-color;
+  }
 }
 
 @mixin cancel() {
@@ -85,6 +83,10 @@ $generic-bg: #db4c3f;
   cursor: pointer;
   font-size: 14px;
   margin: 2px 5px;
+
+  &:hover {
+    font-weight: bold;
+  }
 }
 
 @mixin transparent-button() {
@@ -92,7 +94,7 @@ $generic-bg: #db4c3f;
   border: 0;
 }
 
-@mixin task-item() {
+@mixin task() {
   list-style-type: none;
   display: flex;
   line-height: 18px;
@@ -116,19 +118,9 @@ $generic-bg: #db4c3f;
   }
 }
 
-/* Darkmode*/
-.darkmode {
-  header {
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-    background-color: #282828;
-    border-color: transparent;
-  }
-}
-
 // ----- HEADER -----------
 header {
-  border-bottom: solid 1px #a73822;
+  border-bottom: solid 1px #2080dab9;
   background-color: $generic-bg;
   transition: height 200ms ease-in;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -197,11 +189,6 @@ header {
           margin-right: 15px;
           font-size: 30px;
         }
-
-        &.settings__dark-mode svg {
-          width: 20px;
-          height: 20px;
-        }
       }
     }
   }
@@ -246,6 +233,11 @@ header {
 
       svg {
         color: #cacaca;
+      }
+
+      svg:hover {
+        font-weight: bold;
+        color: black !important;
       }
     }
 
@@ -347,7 +339,6 @@ header {
     right: 0;
 
     background-color: white;
-
     p {
       margin: 10px 5px;
       line-height: normal;
@@ -355,7 +346,7 @@ header {
     }
 
     button {
-      @include btn(60px);
+      @include btn(#ff0000, #fc5555);
     }
 
     span {
@@ -372,11 +363,187 @@ header {
 
 //------------- Content ----------------
 .content {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto;
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
   margin: auto;
+
+  &__editor {
+    margin: auto;
+
+    display: flex;
+    flex-grow: 3;
+    flex-direction: column;
+  }
+}
+
+// ---------------- TaskDate
+
+.task-date {
+  @include box-overlay();
+  width: 220px;
+  right: 0;
+  background-color: white;
+
+  svg {
+    fill: gray;
+  }
+}
+
+//------- New Task -----
+.add-new-task {
+  margin-top: 5px;
+
+  &__small {
+    @include no-select();
+    margin-bottom: 10px;
+
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  &__overlay {
+    background: rgba(121, 72, 72, 0.652);
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: calc(100vh);
+
+    .add-new-task__default {
+      overflow: visible;
+      margin-top: 60px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      background-color: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+  }
+  &__default {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 0 10px;
+    height: 30px;
+  }
+
+  &__buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    &__datepicker {
+      flex-shrink: 3;
+    }
+
+    &__project {
+      cursor: pointer;
+      color: gray;
+      font-size: 20px;
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    &__submit,
+    &__cancel {
+      // can't select it like the text
+      @include no-select;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__submit {
+      @include btn($generic-bg);
+      margin: 0;
+    }
+    &__cancel {
+      @include cancel();
+      flex-shrink: 3;
+    }
+  }
+
+  &__plus {
+    color: $generic-bg;
+  }
+
+  &__text {
+    flex-grow: 2;
+    font-size: 15px;
+    margin-left: 15px;
+  }
+}
+
+// ------ Project Dropdown
+.project-dropdown {
+  // top: 140px !important;
+  @include box-overlay();
+  // left: 300px;
+  width: 50%;
+  background-color: white;
+
+  &__list li {
+    @include task();
+  }
+}
+
+// ------ New Project ---------
+.add-new-project {
+  padding-right: 25px;
+  padding-left: 15px;
+  margin-top: 25px;
+
+  &__input {
+    margin: 25px;
+  }
+
+  &__name {
+    border: 1px solid;
+    width: 100%;
+    border-radius: 5px;
+    height: 30px;
+    padding: 10px;
+  }
+
+  &__submit {
+    @include btn($generic-bg);
+  }
+
+  &__cancel {
+    @include cancel();
+  }
+
+  &__text {
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
 }
 
 // ------Tasks-----------

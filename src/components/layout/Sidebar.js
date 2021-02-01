@@ -7,14 +7,13 @@ import { AddProject } from "../AddProject";
 
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
-  const [active, setActive] = useState("today");
+  const [active, setActive] = useState("notepad");
   const [showProjects, setShowProjects] = useState(true);
 
   return (
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
         <li
-          data-testid="notepad"
           className={active === "notepad" ? "active" : undefined}
           onClick={() => {
             setActive("notepad");
@@ -28,7 +27,6 @@ export const Sidebar = () => {
         </li>
 
         <li
-          data-testid="today"
           className={active === "today" ? "active" : undefined}
           data-testid="today-action"
           role="button"
@@ -43,7 +41,6 @@ export const Sidebar = () => {
           <span>Dzisiejsze zadania</span>
         </li>
         <li
-          data-testid="next_week"
           className={active === "next_week" ? "active" : undefined}
           onClick={() => {
             setActive("next_week");
@@ -57,7 +54,7 @@ export const Sidebar = () => {
         </li>
       </ul>
       <div
-        className="sidebar__middle"
+        className={"sidebar__middle "}
         onClick={() => setShowProjects(!showProjects)}
       >
         <span>
@@ -65,7 +62,7 @@ export const Sidebar = () => {
             className={!showProjects ? "hidden-projects" : undefined}
           />
         </span>
-        <h2>Projects</h2>
+        <h2>Projekty</h2>
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}

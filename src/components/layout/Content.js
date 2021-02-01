@@ -5,6 +5,8 @@ import { Tasks } from "../Tasks";
 export const Content = () => (
   <section className="content">
     <Sidebar />
-    <Tasks />
+    <div className="content__editor">
+      <Tasks />
+    </div>
   </section>
 );

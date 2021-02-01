@@ -8,7 +8,7 @@ export const AddProject = ({ initialShow = false }) => {
   const [projectName, setProjectName] = useState("");
 
   const projectId = generatePushId();
-  const { setProjects } = useProjectsValue();
+  const { projects, setProjects } = useProjectsValue();
 
   const addProject = () => {
     if (projectName) {
@@ -22,7 +22,7 @@ export const AddProject = ({ initialShow = false }) => {
           // TODO : auth().uid
         })
         .then(() => {
-          setProjects([]); // trigger a refresh of projects
+          setProjects([...projects]); // trigger a refresh of projects
           setProjectName("");
           setShow(false);
         });
@@ -57,7 +57,7 @@ export const AddProject = ({ initialShow = false }) => {
   }
   return (
     <div className="add-new-project">
-      <span className="add-new-project__span" onClick={() => setShow(!show)}>
+      <span className="add-new-project__text" onClick={() => setShow(!show)}>
         Stwórz nowy projekt
       </span>
     </div>

@@ -38,7 +38,7 @@ export const useTasks = (selectedProject) => {
         selectedProject === "NEXT_WEEK"
           ? newTasks.filter(
               (task) =>
-                dayjs(task.data, "DD-MM-YYYY").diff(dayjs(), "days") <= 7 &&
+                dayjs().diff(task.date, "DD-MM-YYYY", "days") <= 7 &&
                 task.archived !== true
             )
           : newTasks.filter((task) => task.archived !== true)

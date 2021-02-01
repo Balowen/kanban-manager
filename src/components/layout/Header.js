@@ -3,17 +3,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 export const Header = () => {
   return (
-    <header className="header" data-testid="header">
+    <header className="header">
       <nav>
         <div className="logo">
           <img src="/images/logo.png" alt="Kanban Manager Logo" />
         </div>
         <div className="settings">
           <ul>
-            <li data-testid="add-task-action" className="settings__add">
-              +
-            </li>
-            <li data-testid="dark-mode-action" className="settings__darkmode">
+            <li className="settings__add">+</li>
+            <li className="settings__toggle-sidebar">
               <GiHamburgerMenu />
             </li>
           </ul>
