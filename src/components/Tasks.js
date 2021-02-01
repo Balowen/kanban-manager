@@ -5,6 +5,7 @@ import { useTasks } from "../hooks";
 import { Checkbox } from "./Checkbox";
 import { collatedTasks } from "../constants";
 import { AddTask } from "./AddTask";
+import { Board } from "./Board/Board";
 
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
@@ -31,7 +32,7 @@ export const Tasks = () => {
     <div className="tasks">
       <h2>{projectName}</h2>
 
-      <ul className="tasks__list">
+      {/* <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={`${task.id}`}>
             <Checkbox id={task.id} />
@@ -39,7 +40,8 @@ export const Tasks = () => {
             <span style={{ margin: "auto" }}>{task.date}</span>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <Board />
       <AddTask />
     </div>
   );
