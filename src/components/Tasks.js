@@ -9,8 +9,6 @@ export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
-  const [showListView, setShowListView] = useState(false);
-
   let projectName = "";
   if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
     projectName = getTitle(projects, selectedProject).name;
@@ -18,8 +16,7 @@ export const Tasks = () => {
   }
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-
-    console.log("projectname 2:", projectName, selectedProject);
+    console.log("projectname 2:", projectName);
   }
 
   useEffect(() => {
@@ -41,7 +38,7 @@ export const Tasks = () => {
           </li>
         ))}
       </ul> */}
-      {/* {proje === "NOTEPAD"} */}
+      {/* {selectedProject === "NOTEPAD"} */}
       <Board />
       {/* <AddTask /> */}
     </div>

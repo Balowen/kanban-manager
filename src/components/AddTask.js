@@ -5,6 +5,7 @@ import { useSelectedProjectValue } from "../context";
 import DatePicker, { registerLocale } from "react-datepicker";
 import pl from "date-fns/locale/pl";
 import "react-datepicker/dist/react-datepicker.css";
+import "./customDatePickerWidth.css";
 
 import { IoMdAdd, IoMdListBox } from "react-icons/io";
 import { ProjectDropdown } from "./ProjectDropdown";
