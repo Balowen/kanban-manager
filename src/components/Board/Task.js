@@ -32,7 +32,7 @@ export const Task = ({ task, moveTask, setDragElement }) => {
         onDragOver={dragover_handler}
         onDragEnd={dragend_handler}
       >
-        <Checkbox id={task.id} />
+        <Checkbox id={task.id} description={task.task} />
         <p>{task.task}</p>
       </div>
       <TaskModal show={showModal} onClose={onClose} task={task} />

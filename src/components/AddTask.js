@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { IoMdAdd, IoMdListBox } from "react-icons/io";
 import { ProjectDropdown } from "./ProjectDropdown";
 
-export const AddTask = ({ showAddTask = true, shouldShow = false }) => {
+export const AddTask = ({ showAddTask = true, shouldShow = false, status }) => {
   const [task, setTask] = useState("");
   const [project, setProject] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
@@ -29,6 +29,7 @@ export const AddTask = ({ showAddTask = true, shouldShow = false }) => {
     return (
       task &&
       projectId &&
+      status &&
       firebase
         .firestore()
         .collection("tasks")
@@ -38,6 +39,7 @@ export const AddTask = ({ showAddTask = true, shouldShow = false }) => {
           task: task,
           date: comparedDate || dayjs(taskDate).format("DD/MM/YYYY"),
           userId: "AZqpRTFsJou2NreVy2XN",
+          status: status,
         })
         .then(() => {
           setTask("");
@@ -57,7 +59,7 @@ export const AddTask = ({ showAddTask = true, shouldShow = false }) => {
           onClick={() => setShowDefault(!showDefault)}
         >
           <IoMdAdd className="add-new-task__plus" />
-          <span className="add-new-task__text">Stwórz nowe zadanie</span>
+          <span className="add-new-task__text">Dodaj zadanie</span>
         </div>
       )}
 
@@ -110,4 +112,8 @@ export const AddTask = ({ showAddTask = true, shouldShow = false }) => {
       )}
     </div>
   );
+};
+
+AddTask.defaultProps = {
+  status: "todo",
 };

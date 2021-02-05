@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { getTitle, collatedTasksExist, getCollatedTitle } from "../helpers";
 import { useTasks } from "../hooks";
-import { Checkbox } from "./Checkbox";
 import { collatedTasks } from "../constants";
-import { AddTask } from "./AddTask";
 import { Board } from "./Board/Board";
 
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
+  const [showListView, setShowListView] = useState(false);
 
   let projectName = "";
   if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
@@ -19,11 +18,12 @@ export const Tasks = () => {
   }
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-    console.log("projectname 2:", projectName);
+
+    console.log("projectname 2:", projectName, selectedProject);
   }
 
   useEffect(() => {
-    document.title = `${projectName}: Kanban`;
+    document.title = `${projectName}`;
   });
 
   console.log("tasks", tasks);
@@ -31,7 +31,7 @@ export const Tasks = () => {
   return (
     <div className="tasks">
       <h2>{projectName}</h2>
-
+      {/* TODO: Task__list or Board zależnie od state */}
       {/* <ul className="tasks__list">
         {tasks.map((task) => (
           <li key={`${task.id}`}>
@@ -41,8 +41,9 @@ export const Tasks = () => {
           </li>
         ))}
       </ul> */}
+      {/* {proje === "NOTEPAD"} */}
       <Board />
-      <AddTask />
+      {/* <AddTask /> */}
     </div>
   );
 };

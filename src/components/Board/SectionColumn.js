@@ -1,3 +1,3 @@
 export const SectionColumn = ({ children }) => {
-  return <div classname={"section-column"}>{children}</div>;
+  return <div className={"section-column"}>{children}</div>;
 };

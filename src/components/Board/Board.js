@@ -5,6 +5,7 @@ import { SectionColumn } from "./SectionColumn";
 import { Task } from "./Task";
 import { DropHandler } from "./DropHandler";
 import { useState } from "react";
+import { AddTask } from "../AddTask";
 import "./Board.scss";
 
 export const Board = () => {
@@ -23,7 +24,24 @@ export const Board = () => {
   };
 
   //   move tasks in one column
-  //   const moveTask = (el) => {};
+  const moveTask = (el) => {
+    const draggedItemIndex = tasks.findIndex(
+      (i) => i.task === dragElement.task
+    );
+    const hoverItemIndex = tasks.findIndex((i) => i.task === el);
+
+    // batched transaction
+    // let batch = firebase.firestore().batch()
+    // var tasksRef = firebase.firestore().collection("tasks").doc(task.id)
+    // // Referencja do dokumentu tasks
+    // return firebase
+    //   .firestore()
+    //   .collection("tasks")
+    //   .doc()
+
+    // TODO: LEXORANK ALGORITHM to provide indexes for tasks
+    console.log(draggedItemIndex, hoverItemIndex, tasks, el);
+  };
 
   const setDragEl = (element) => setDragElement(element);
 
@@ -47,9 +65,10 @@ export const Board = () => {
                       key={task.id}
                       task={task}
                       setDragElement={setDragEl}
+                      moveTask={moveTask}
                     />
                   ))}
-                <button onClick={(e) => onAddItem(status)}>Add ticket</button>
+                <AddTask status={status} />
               </SectionColumn>
             </DropHandler>
           </div>

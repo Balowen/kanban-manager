@@ -366,13 +366,26 @@ header {
   display: flex;
   flex-direction: column;
   margin: auto;
+  @media screen and (min-width: 1400px) {
+    &__editor {
+      width: 1370px;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    &__editor {
+      width: 1570px;
+    }
+  }
+  @media screen and (min-width: 1900px) {
+    &__editor {
+      width: 1870px;
+    }
+  }
 
   &__editor {
     margin: auto;
-
     display: flex;
-    flex-grow: 3;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -548,7 +561,7 @@ header {
 
 // ------Tasks-----------
 .tasks {
-  width: 656px;
+  flex-grow: 100;
   background-color: white;
   margin-left: 266px;
   border-right: $generic-border;
@@ -565,8 +578,15 @@ header {
   }
 
   h2 {
+    display: flex;
+    justify-content: center;
     font-weight: normal;
     margin: 0 30px 20px 0;
+
+    @include mq("900px") {
+      margin-left: 100px;
+      justify-content: left;
+    }
   }
 
   .add-task {

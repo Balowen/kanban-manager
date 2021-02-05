@@ -6,8 +6,6 @@ import dayjs from "dayjs";
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
-  // polling for new tasks all the time
-  // WEBSOCKET.io late TODO
 
   useEffect(() => {
     let unsubscribe = firebase
