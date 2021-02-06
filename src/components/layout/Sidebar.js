@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { MdExpandMore } from "react-icons/md";
 import { FaCalendarDay, FaCalendarWeek, FaTasks } from "react-icons/fa";
 import { useSelectedProjectValue } from "../../context";
@@ -66,6 +68,9 @@ export const Sidebar = () => {
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}
+      <span>
+        <Link to="logout">Wyloguj</Link>
+      </span>
     </div>
   );
 };

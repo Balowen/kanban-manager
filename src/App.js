@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Content } from "./components/layout/Content";
 import { Header } from "./components/layout/Header";
 
 import { ProjectsProvider, SelectedProjectProvider } from "./context";
 
-export const App = () => {
+const App = () => {
   return (
     <SelectedProjectProvider>
       <ProjectsProvider>
@@ -16,3 +17,5 @@ export const App = () => {
     </SelectedProjectProvider>
   );
 };
+
+export default App;

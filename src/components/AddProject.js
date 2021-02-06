@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { firebase } from "../firebase";
 import { generatePushId } from "../helpers";
 import { useProjectsValue } from "../context";
+import { useAuth } from "../context/AuthContext";
 
-export const AddProject = ({ initialShow = false }) => {
+export const AddProject = ({ initialShow = false, user }) => {
+  const { currentUser } = useAuth();
   const [show, setShow] = useState(initialShow);
   const [projectName, setProjectName] = useState("");
 
@@ -18,7 +20,7 @@ export const AddProject = ({ initialShow = false }) => {
         .add({
           projectId,
           name: projectName,
-          userId: "AZqpRTFsJou2NreVy2XN",
+          userId: currentUser.uid,
           // TODO : auth().uid
         })
         .then(() => {

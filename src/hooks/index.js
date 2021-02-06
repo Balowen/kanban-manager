@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { firebase } from "../firebase";
 import { collatedTasksExist } from "../helpers";
 import dayjs from "dayjs";
+import { useAuth } from "../context/AuthContext";
 
 export const useTasks = (selectedProject) => {
+  const { currentUser } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
 
@@ -11,7 +13,7 @@ export const useTasks = (selectedProject) => {
     let unsubscribe = firebase
       .firestore()
       .collection("tasks")
-      .where("userId", "==", "AZqpRTFsJou2NreVy2XN");
+      .where("userId", "==", currentUser.uid);
 
     unsubscribe =
       selectedProject && !collatedTasksExist(selectedProject)
@@ -52,13 +54,15 @@ export const useTasks = (selectedProject) => {
 };
 
 export const useProjects = () => {
+  const { currentUser } = useAuth();
+
   const [projects, setProjects] = useState([]);
   // get projects once
   useEffect(() => {
     firebase
       .firestore()
       .collection("projects")
-      .where("userId", "==", "AZqpRTFsJou2NreVy2XN")
+      .where("userId", "==", currentUser.uid)
       .orderBy("projectId")
       .get()
       .then((snapshot) => {

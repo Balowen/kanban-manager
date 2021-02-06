@@ -9,8 +9,10 @@ import "./customDatePickerWidth.css";
 
 import { IoMdAdd, IoMdListBox } from "react-icons/io";
 import { ProjectDropdown } from "./ProjectDropdown";
+import { useAuth } from "../context/AuthContext";
 
 export const AddTask = ({ showAddTask = true, shouldShow = false, status }) => {
+  const { currentUser } = useAuth();
   const [task, setTask] = useState("");
   const [project, setProject] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
@@ -39,7 +41,7 @@ export const AddTask = ({ showAddTask = true, shouldShow = false, status }) => {
           projectId: projectId,
           task: task,
           date: comparedDate || dayjs(taskDate).format("DD/MM/YYYY"),
-          userId: "AZqpRTFsJou2NreVy2XN",
+          userId: currentUser.uid,
           status: status,
         })
         .then(() => {

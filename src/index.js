@@ -1,6 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { App } from "./App";
+import CustomRouter from "./components/Authentication/CustomRouter";
 import "./App.scss";
 
-render(<App />, document.getElementById("root"));
+const entry = document.getElementById("root");
+
+render(<CustomRouter />, entry);
