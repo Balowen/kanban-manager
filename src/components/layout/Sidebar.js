@@ -68,7 +68,7 @@ export const Sidebar = () => {
       </div>
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}
-      <span>
+      <span className="sidebar__logout">
         <Link to="logout">Wyloguj</Link>
       </span>
     </div>

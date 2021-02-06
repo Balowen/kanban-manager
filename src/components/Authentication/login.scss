@@ -1,42 +1,24 @@
-$background: #2f1f4d;
-$brighter: #4d337e;
-$brightest: #6e4baf;
+$background: #0881f2;
+$brighter: #5ca1e2;
+$brightest: #86b2dc;
 $text: #fcfcfc;
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background: $background;
-  overflow: hidden;
-}
-
-button {
-  background: $brighter;
-  border: none;
-  padding: 0.5em 1em;
-  margin: 0.25em;
-  border-radius: 0.25em;
-  box-sizing: content-box;
-  color: $text;
-  border: none;
-
-  transition: background 0.25s;
-
-  &:hover {
-    cursor: pointer;
-    background: $brightest;
-  }
-}
 
 .sign_in {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 500px;
+  border: 1px solid black;
+  min-width: 315px;
+  max-width: 600px;
   width: 100vw;
-  margin: 0 auto;
+  align-items: center;
+  margin: 10vh auto;
+  padding: 10px;
+  border-radius: 5px;
 
   span {
-    margin-left: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 
   input {
@@ -57,5 +39,30 @@ button {
     font-weight: bold;
     text-align: center;
     padding: 0.5em;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    background: $background;
+    overflow: hidden;
+  }
+
+  button {
+    background: $brighter;
+    border: none;
+    padding: 0.5em 1em;
+    margin: 0.25em;
+    border-radius: 0.25em;
+    box-sizing: content-box;
+    color: $text;
+    border: none;
+
+    transition: background 0.25s;
+
+    &:hover {
+      cursor: pointer;
+      background: $brightest;
+    }
   }
 }

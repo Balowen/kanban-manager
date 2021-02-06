@@ -323,6 +323,21 @@ header {
       }
     }
   }
+
+  &__logout {
+    display: inline-block;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+
+    &:hover {
+      color: $generic-bg;
+      font-weight: bold;
+    }
+  }
 }
 
 // ------Delete confirmation ------------

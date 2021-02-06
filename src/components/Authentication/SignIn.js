@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, google } from "../../firebase";
+import { Header } from "../../components/layout/Header";
 import "./login.scss";
 
 const INPUTS = Object.freeze({
@@ -79,29 +80,32 @@ export default function SignIn() {
   };
 
   return (
-    <div className="sign_in">
-      <span>Email:</span>
-      <input
-        type="text"
-        value={email}
-        onChange={updateValue.bind(null, INPUTS.email)}
-      />
-      <span>Password:</span>
-      <input
-        type="password"
-        value={password}
-        onChange={updateValue.bind(null, INPUTS.password)}
-      />
-      <div className="error_response">{errorResponse}</div>
-      <button onClick={trySignIn} disabled={loading}>
-        Sign in
-      </button>{" "}
-      <button onClick={trySignUp} disabled={loading}>
-        Sign up
-      </button>
-      <button onClick={trySignInWithGoogle} disabled={loading}>
-        Or sign in with Google
-      </button>
-    </div>
+    <>
+      <Header />
+      <div className="sign_in">
+        <span>Email:</span>
+        <input
+          type="text"
+          value={email}
+          onChange={updateValue.bind(null, INPUTS.email)}
+        />
+        <span>Hasło:</span>
+        <input
+          type="password"
+          value={password}
+          onChange={updateValue.bind(null, INPUTS.password)}
+        />
+        <div className="error_response">{errorResponse}</div>
+        <button onClick={trySignIn} disabled={loading}>
+          Zaloguj
+        </button>{" "}
+        <button onClick={trySignUp} disabled={loading}>
+          Zarejestruj się
+        </button>
+        <button onClick={trySignInWithGoogle} disabled={loading}>
+          Lub zaloguj kontem Google
+        </button>
+      </div>
+    </>
   );
 }

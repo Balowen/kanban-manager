@@ -30,15 +30,6 @@ export const Board = () => {
     );
     const hoverItemIndex = tasks.findIndex((i) => i.task === el);
 
-    // batched transaction
-    // let batch = firebase.firestore().batch()
-    // var tasksRef = firebase.firestore().collection("tasks").doc(task.id)
-    // // Referencja do dokumentu tasks
-    // return firebase
-    //   .firestore()
-    //   .collection("tasks")
-    //   .doc()
-
     // TODO: LEXORANK ALGORITHM to provide indexes for tasks
     console.log(draggedItemIndex, hoverItemIndex, tasks, el);
   };

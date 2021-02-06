@@ -10,18 +10,21 @@ export const Tasks = () => {
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
   let projectName = "";
-  if (projects && selectedProject && !collatedTasksExist(selectedProject)) {
-    projectName = getTitle(projects, selectedProject).name;
-    console.log("projectname 1:", projectName);
-  }
+
   if (collatedTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
     console.log("projectname 2:", projectName);
   }
 
-  useEffect(() => {
-    document.title = `${projectName}`;
-  });
+  if (
+    projects &&
+    selectedProject.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
+    console.log("projectname 1:", projectName);
+  }
 
   console.log("tasks", tasks);
 
