@@ -25,7 +25,7 @@ export const useTasks = (selectedProject) => {
             dayjs().format("DD/MM/YYYY")
           ))
         : selectedProject === "NOTEPAD" || selectedProject === 0
-        ? (unsubscribe = unsubscribe.where("date", "==", ""))
+        ? (unsubscribe = unsubscribe.where("projectId", "==", "NOTEPAD"))
         : unsubscribe;
 
     unsubscribe = unsubscribe.onSnapshot((snapshot) => {

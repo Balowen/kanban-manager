@@ -38,7 +38,7 @@ export const Board = () => {
 
   return (
     <div className="row">
-      {["todo", "in progress", "done"].map((status) => {
+      {["Do zrobienia", "W trakcie", "Zrobione"].map((status) => {
         return (
           <div key={status} className={"col-wrapper"}>
             <div className={"col-group"}>

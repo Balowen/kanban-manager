@@ -8,7 +8,6 @@ export const Project = ({ project }) => {
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
-  //   project can be a channel/room in socket.io
   const deleteProject = (docId) => {
     firebase
       .firestore()

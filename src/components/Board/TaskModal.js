@@ -11,7 +11,7 @@ export const TaskModal = ({ show, onClose, task }) => {
       overlayClassName={"overlay"}
     >
       <div className={"modal__close-ctn"}>
-        <h1 style={{ flex: "1 90%" }}>{task.task}</h1>
+        <h1 style={{ flex: "1 90%" }}>Zadanie</h1>
         <button className="modal__close-ctn__btn" onClick={onClose}>
           X
         </button>
