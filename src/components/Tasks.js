@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { getTitle, collatedTasksExist, getCollatedTitle } from "../helpers";
 import { useTasks } from "../hooks";
@@ -43,7 +43,6 @@ export const Tasks = () => {
       </ul> */}
       {/* {selectedProject === "NOTEPAD"} */}
       <Board />
-      {/* <AddTask /> */}
     </div>
   );
 };

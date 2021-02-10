@@ -13,7 +13,7 @@ export const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
 
   return (
-    <div className="sidebar" data-testid="sidebar">
+    <div className="sidebar">
       <ul className="sidebar__generic">
         <li
           className={active === "notepad" ? "active" : undefined}
@@ -30,7 +30,6 @@ export const Sidebar = () => {
 
         <li
           className={active === "today" ? "active" : undefined}
-          data-testid="today-action"
           role="button"
           onClick={() => {
             setActive("today");
@@ -66,7 +65,9 @@ export const Sidebar = () => {
         </span>
         <h2>Projekty</h2>
       </div>
-      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
+      <ul className="sidebar__projects">
+        {showProjects && <Projects setActiveStyle={setActive} />}
+      </ul>
       {showProjects && <AddProject />}
       <span className="sidebar__logout">
         <Link to="logout">Wyloguj</Link>

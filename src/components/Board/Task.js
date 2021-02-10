@@ -5,7 +5,9 @@ import { TaskModal } from "./TaskModal";
 export const Task = ({ task, moveTask, setDragElement }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const onClose = () => setShowModal(false);
+  const onClose = () => {
+    setShowModal(false);
+  };
   const onOpen = () => setShowModal(true);
   const dragstart_handler = ({ dataTransfer, target }) => {
     dataTransfer.setData("task", JSON.stringify(task));

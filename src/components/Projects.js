@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { Project } from "./layout/Project";
 
-export const Projects = ({ activeValue = true }) => {
+export const Projects = ({ activeValue = true, setActiveStyle }) => {
   const [active, setActive] = useState(activeValue);
   const { setSelectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
@@ -15,7 +15,6 @@ export const Projects = ({ activeValue = true }) => {
       <li
         key={projects.projectId}
         data-doc-id={projects.projectId}
-        data-testid="project-action"
         className={
           active === projects.projectId
             ? "active sidebar__project"
@@ -26,6 +25,7 @@ export const Projects = ({ activeValue = true }) => {
           setSelectedProject(project.projectId);
         }}
         onClick={() => {
+          setActiveStyle("");
           setActive(project.projectId);
           setSelectedProject(project.projectId);
         }}
