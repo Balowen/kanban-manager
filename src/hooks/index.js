@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { firebase } from "../firebase";
 import { collatedTasksExist } from "../helpers";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useAuth } from "../context/AuthContext";
 
 export const useTasks = (selectedProject) => {
@@ -33,12 +34,13 @@ export const useTasks = (selectedProject) => {
         id: task.id,
         ...task.data(),
       }));
+      dayjs.extend(customParseFormat);
 
       setTasks(
         selectedProject === "NEXT_WEEK"
           ? newTasks.filter(
               (task) =>
-                dayjs().diff(task.date, "DD-MM-YYYY", "days") <= 7 &&
+                dayjs(task.date, "DD/MM/YYYY").diff(dayjs(), "day") <= 7 &&
                 task.archived !== true
             )
           : newTasks.filter((task) => task.archived !== true)

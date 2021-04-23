@@ -103,7 +103,7 @@ export default function SignIn() {
           Zarejestruj się
         </button>
         <button onClick={trySignInWithGoogle} disabled={loading}>
-          Lub zaloguj kontem Google
+          Zaloguj kontem Google
         </button>
       </div>
     </>
