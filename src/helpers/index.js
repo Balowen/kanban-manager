@@ -1,13 +1,13 @@
-import { collatedTasks } from "../constants";
+import { matchingTasks } from "../constants";
 
 export const getTitle = (projects, projectId) =>
   projects.find((project) => project.projectId === projectId);
 
-export const getCollatedTitle = (projects, key) =>
+export const getMatchingTitle = (projects, key) =>
   projects.find((project) => project.key === key);
 
 export const matchingTasksExist = (selectedProject) =>
-  collatedTasks.find((task) => task.key === selectedProject);
+  matchingTasks.find((task) => task.key === selectedProject);
 
 export const generatePushId = (() => {
   const PUSH_CHARS =

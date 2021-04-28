@@ -1,7 +1,7 @@
 import React from "react";
 import { useProjectsValue, useSelectedProject } from "../context";
-import { getTitle, matchingTasksExist, getCollatedTitle } from "../helpers";
-import { collatedTasks } from "../constants";
+import { getTitle, matchingTasksExist, getMatchingTitle } from "../helpers";
+import { matchingTasks } from "../constants";
 import { Board } from "./Board/Board";
 
 export const Tasks = () => {
@@ -10,7 +10,7 @@ export const Tasks = () => {
   let projectName = "";
 
   if (matchingTasksExist(selectedProject) && selectedProject) {
-    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+    projectName = getMatchingTitle(matchingTasks, selectedProject).name;
   }
 
   if (
