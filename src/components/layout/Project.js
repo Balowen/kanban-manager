@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { IoMdTrash } from "react-icons/io";
-import { useProjectsValue, useSelectedProjectValue } from "../../context";
+import { useProjectsValue, useSelectedProject } from "../../context";
 import { firebase } from "../../firebase";
 
 export const Project = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
-  const { setSelectedProject } = useSelectedProjectValue();
+  const { setSelectedProject } = useSelectedProject();
 
   const deleteProject = (docId) => {
     firebase

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import { firebase } from "../firebase";
-import { useSelectedProjectValue } from "../context";
+import { useSelectedProject } from "../context";
 import DatePicker, { registerLocale } from "react-datepicker";
 import pl from "date-fns/locale/pl";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,7 +18,7 @@ export const AddTask = ({ showAddTask = true, shouldShow = false, status }) => {
   const [taskDate, setTaskDate] = useState(new Date());
   const [showDefault, setShowDefault] = useState(shouldShow);
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
-  const { selectedProject } = useSelectedProjectValue();
+  const { selectedProject } = useSelectedProject();
 
   const addTask = () => {
     const projectId = project || selectedProject;

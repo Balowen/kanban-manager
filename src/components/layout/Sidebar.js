@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 import { MdExpandMore } from "react-icons/md";
 import { FaCalendarDay, FaCalendarWeek, FaTasks } from "react-icons/fa";
-import { useSelectedProjectValue } from "../../context";
+import { useSelectedProject } from "../../context";
 import { Projects } from "../Projects";
 import { AddProject } from "../AddProject";
 
 export const Sidebar = () => {
-  const { setSelectedProject } = useSelectedProjectValue();
+  const { setSelectedProject } = useSelectedProject();
   const [active, setActive] = useState("notepad");
-  const [showProjects, setShowProjects] = useState(true);
+  const [showProjectsList, setShowProjectsList] = useState(true);
 
   return (
     <div className="sidebar">
@@ -56,19 +56,19 @@ export const Sidebar = () => {
       </ul>
       <div
         className={"sidebar__middle "}
-        onClick={() => setShowProjects(!showProjects)}
+        onClick={() => setShowProjectsList(!showProjectsList)}
       >
         <span>
           <MdExpandMore
-            className={!showProjects ? "hidden-projects" : undefined}
+            className={!showProjectsList ? "hidden-projects" : undefined}
           />
         </span>
         <h2>Projekty</h2>
       </div>
       <ul className="sidebar__projects">
-        {showProjects && <Projects setActiveStyle={setActive} />}
+        {showProjectsList && <Projects setActiveStyle={setActive} />}
       </ul>
-      {showProjects && <AddProject />}
+      {showProjectsList && <AddProject />}
       <span className="sidebar__logout">
         <Link to="logout">Wyloguj</Link>
       </span>

@@ -7,7 +7,7 @@ import {
 import {
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue,
+  useSelectedProject,
 } from "./selected-project-context";
 
 export {
@@ -16,5 +16,5 @@ export {
   useProjectsValue,
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue,
+  useSelectedProject,
 };

@@ -1,4 +1,4 @@
-import { useSelectedProjectValue } from "../../context";
+import { useSelectedProject } from "../../context";
 import { useTasks } from "../../hooks";
 import { firebase } from "../../firebase";
 import { SectionColumn } from "./SectionColumn";
@@ -10,7 +10,7 @@ import "./Board.scss";
 
 export const Board = () => {
   const [dragElement, setDragElement] = useState(null);
-  const { selectedProject } = useSelectedProjectValue();
+  const { selectedProject } = useSelectedProject();
   const { tasks } = useTasks(selectedProject);
   const onDrop = (task, status) => {
     if (task.status === status) {
@@ -29,9 +29,6 @@ export const Board = () => {
       (i) => i.task === dragElement.task
     );
     const hoverItemIndex = tasks.findIndex((i) => i.task === el);
-
-    // TODO: LEXORANK ALGORITHM to provide indexes for tasks
-    console.log(draggedItemIndex, hoverItemIndex, tasks, el);
   };
 
   const setDragEl = (element) => setDragElement(element);

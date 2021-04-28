@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { firebase } from "../firebase";
-import { collatedTasksExist } from "../helpers";
+import { matchingTasksExist } from "../helpers";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useAuth } from "../context/AuthContext";
@@ -17,7 +17,7 @@ export const useTasks = (selectedProject) => {
       .where("userId", "==", currentUser.uid);
 
     unsubscribe =
-      selectedProject && !collatedTasksExist(selectedProject)
+      selectedProject && !matchingTasksExist(selectedProject)
         ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
         : selectedProject === "TODAY"
         ? (unsubscribe = unsubscribe.where(
@@ -77,7 +77,7 @@ export const useProjects = () => {
           setProjects(allProjects);
         }
       });
-  }, [projects]);
+  }, []);
 
   return { projects, setProjects };
 };

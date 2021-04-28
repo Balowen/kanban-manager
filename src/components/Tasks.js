@@ -1,47 +1,30 @@
 import React from "react";
-import { useProjectsValue, useSelectedProjectValue } from "../context";
-import { getTitle, collatedTasksExist, getCollatedTitle } from "../helpers";
-import { useTasks } from "../hooks";
+import { useProjectsValue, useSelectedProject } from "../context";
+import { getTitle, matchingTasksExist, getCollatedTitle } from "../helpers";
 import { collatedTasks } from "../constants";
 import { Board } from "./Board/Board";
 
 export const Tasks = () => {
-  const { selectedProject } = useSelectedProjectValue();
+  const { selectedProject } = useSelectedProject();
   const { projects } = useProjectsValue();
-  const { tasks } = useTasks(selectedProject);
   let projectName = "";
 
-  if (collatedTasksExist(selectedProject) && selectedProject) {
+  if (matchingTasksExist(selectedProject) && selectedProject) {
     projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-    console.log("projectname 2:", projectName);
   }
 
   if (
     projects &&
     selectedProject.length > 0 &&
     selectedProject &&
-    !collatedTasksExist(selectedProject)
+    !matchingTasksExist(selectedProject)
   ) {
     projectName = getTitle(projects, selectedProject).name;
-    console.log("projectname 1:", projectName);
   }
-
-  console.log("tasks", tasks);
 
   return (
     <div className="tasks">
       <h2>{projectName}</h2>
-      {/* TODO: Task__list or Board zależnie od state */}
-      {/* <ul className="tasks__list">
-        {tasks.map((task) => (
-          <li key={`${task.id}`}>
-            <Checkbox id={task.id} />
-            <span>{task.task}</span>
-            <span style={{ margin: "auto" }}>{task.date}</span>
-          </li>
-        ))}
-      </ul> */}
-      {/* {selectedProject === "NOTEPAD"} */}
       <Board />
     </div>
   );
